@@ -9,7 +9,7 @@
   flex-direction: column;
 }
 
-.titlediv {
+.title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
   background-color: #212121;
 }
 
-.titlediv > h1 {
+.title > h1 {
   font-family: "ClimateCrisis-Regular";
   color: #303030;
   background-color: #212121;
