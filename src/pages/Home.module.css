@@ -4,13 +4,36 @@
     url("../features/common/fonts/ClimateCrisis-Regular.ttf") format("truetype");
 }
 
-p {
-  font-family: "ClimateCrisis-Regular";
-  font-size: 100%;
-}
-
 .container {
   display: flex;
   flex-direction: column;
+}
+
+.titlediv {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100%;
+  background-color: #212121;
+}
+
+.titlediv > h1 {
+  font-family: "ClimateCrisis-Regular";
+  color: #303030;
+  background-color: #212121;
+  font-size: 12vw;
+}
+
+.arena {
+  margin: 10px;
+  height: 400px;
+  background-color: #212121;
+  border-radius: 5px;
+}
+
+.profile {
+  margin: 0px 10px 10px 10px;
+  height: 100px;
+  background-color: #212121;
+  border-radius: 5px;
 }
