@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "ClimateCrisis-Regular";
+  src: local("ClimateCrisis-Regular"),
+    url("../features/common/fonts/ClimateCrisis-Regular.ttf") format("truetype");
+}
+
+p {
+  font-family: "ClimateCrisis-Regular";
+  font-size: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
