@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Barlow-Light";
+  src: local("Barlow-Light"),
+    url("../styling/fonts/Barlow-Light.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Barlow-Medium";
+  src: local("Barlow-Medium"),
+    url("../styling/fonts/Barlow-Medium.ttf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow-Light";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Barlow-Medium";
+}
+
+img {
+  display: block;
+}

@@ -1,0 +1,25 @@
+$backgroundColor: #212121;
+
+.profile__container {
+  margin: 0px 10px 10px 10px;
+  height: 80px;
+  background-color: $backgroundColor;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.profile__picture {
+  width: 70px;
+  height: 70px;
+  border: 4px #303030 solid;
+  border-radius: 40px;
+}
+
+.profile__credentials {
+  padding: 10px;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+}
