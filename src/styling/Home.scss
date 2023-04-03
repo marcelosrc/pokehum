@@ -1,8 +1,17 @@
-$backgroundColor: #303030;
-
 .home__container {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $backgroundColor;
+  background-color: #303030;
+}
+
+.main_window__container {
+  margin: 0px 10px;
+  height: 100%;
+  background-color: #212121;
+  border-radius: 10px;
+  padding: 20px;
+  color: gray;
+  display: flex;
+  align-items: center;
 }

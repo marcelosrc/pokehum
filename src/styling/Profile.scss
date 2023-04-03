@@ -1,9 +1,7 @@
-$backgroundColor: #212121;
-
 .profile__container {
-  margin: 0px 10px 10px 10px;
-  height: 80px;
-  background-color: $backgroundColor;
+  margin: 10px;
+  min-height: 80px;
+  background-color: #212121;
   border-radius: 10px;
   display: flex;
   align-items: center;

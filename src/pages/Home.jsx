@@ -1,7 +1,7 @@
 import React from "react";
-import Title from "../components/Title";
-import Arena from "../components/Arena";
+import Greetings from "../components/Greetings";
 import Profile from "../components/Profile";
+import Footer from "../components/Footer";
 import "../styling/Home.scss";
 import axios from "axios";
 
@@ -9,6 +9,11 @@ export const UserContext = React.createContext({});
 
 function Home() {
   const [currentUser, setCurrentUser] = React.useState({});
+
+  //TEMPORARIO
+  React.useEffect(() => {
+    axios.post("/login", { username: "marcelosrc", password: "123" });
+  }, []);
 
   React.useEffect(() => {
     axios
@@ -24,9 +29,11 @@ function Home() {
   return (
     <UserContext.Provider value={{ currentUser }}>
       <div className="home__container">
-        <Title />
-        <Arena />
         <Profile />
+        <div className="main_window__container">
+          <Greetings />
+        </div>
+        <Footer />
       </div>
     </UserContext.Provider>
   );
