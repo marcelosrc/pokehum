@@ -1,11 +1,13 @@
 .profile__container {
-  margin: 10px;
-  min-height: 80px;
-  background-color: #212121;
+  position: fixed;
+  top: 0;
+  margin: 10px 10px 0px 10px;
+  width: calc(100% - 40px);
   border-radius: 10px;
+  padding: 10px;
+  background-color: #212121;
   display: flex;
   align-items: center;
-  padding: 10px;
 }
 
 .profile__picture {

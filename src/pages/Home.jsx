@@ -1,6 +1,7 @@
 import React from "react";
-import Greetings from "../components/Greetings";
 import Profile from "../components/Profile";
+import Greetings from "../components/Greetings";
+import People from "../components/People";
 import Footer from "../components/Footer";
 import "../styling/Home.scss";
 import axios from "axios";
@@ -32,6 +33,7 @@ function Home() {
         <Profile />
         <div className="main_window__container">
           <Greetings />
+          <People />
         </div>
         <Footer />
       </div>

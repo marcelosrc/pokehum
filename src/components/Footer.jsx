@@ -10,7 +10,7 @@ function Footer() {
         <h2>PPL</h2>
       </div>
       <div className="footer__button">
-        <h2>ITM</h2>
+        <h2>INV</h2>
       </div>
     </div>
   );
