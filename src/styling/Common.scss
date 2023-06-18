@@ -28,3 +28,27 @@ h6 {
 img {
   display: block;
 }
+
+button {
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: grey;
+}
+
+.common-accept-button {
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: rgb(187, 255, 0);
+}
+
+.common-deny-button {
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: red;
+}

@@ -15,7 +15,10 @@ function Profile() {
       />
       <div className="profile__credentials">
         <p>{currentUser.username}</p>
-        <p>{currentUser.captured_ppl} capturados</p>
+        <p>
+          {currentUser.captured_ppl_count}{" "}
+          {currentUser.captured_ppl_count === 1 ? "capturado" : "capturados"}
+        </p>
       </div>
     </div>
   );

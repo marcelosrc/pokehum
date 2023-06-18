@@ -6,7 +6,7 @@ function Greetings() {
   const { currentUser } = React.useContext(UserContext);
 
   return (
-    <div className="greetings__content">
+    <div className="greetings__container">
       <p>Boa noite, {currentUser.username}</p>
       <p>Puta dia bão pra pegar uns otários e meter no cativeiro, hein?</p>
       <p>
