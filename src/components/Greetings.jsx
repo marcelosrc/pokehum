@@ -1,9 +1,22 @@
 import React from "react";
 import { UserContext } from "../pages/Home";
 import "../styling/Greetings.scss";
+import axios from "axios";
 
 function Greetings() {
   const { currentUser } = React.useContext(UserContext);
+  const [leader, setLeader] = React.useState("");
+
+  React.useEffect(() => {
+    axios
+      .get("/gm/ranking")
+      .then((res) => {
+        setLeader(res.data.message[0].username);
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
+  }, []);
 
   return (
     <div className="greetings__container">
@@ -13,6 +26,16 @@ function Greetings() {
         Quem vai ser sua primeira vítima hoje? Clique aqui e descubra quem está
         panguando por aí.
       </p>
+      <p>
+        A propósito, sabia que {leader} é o jogador com mais crias capturadas em
+        seu "abrigo"?
+      </p>
+      <p>É isso mesmo?</p>
+      <p>
+        Você não está nem nos 10 primeiros, seu lixo. Desiste e volta para as
+        suas discussões estúpidas de Twitter.
+      </p>
+      <p>É o que você merece.</p>
     </div>
   );
 }

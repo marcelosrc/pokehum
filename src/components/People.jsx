@@ -10,24 +10,27 @@ function People() {
   const [anyUsers, setAnyUsers] = React.useState([]);
   const [entryId, setEntryId] = React.useState();
   const [showActionMenu, setShowActionMenu] = React.useState();
+  const [reloadFeed, setReloadFeed] = React.useState(false);
 
   React.useEffect(() => {
     axios
       .get("/users/any")
       .then((res) => {
         setAnyUsers(res.data.message);
+        setReloadFeed(false);
       })
       .catch((err) => {
         alert(err.response.data.message);
       });
-  }, [setReloadUser]);
+  }, [setReloadUser, reloadFeed]);
 
   const capture = (anyUserId) => {
     axios
       .post("/gm/capture/" + anyUserId)
       .then((res) => {
-        alert("CAPTURADO");
         setReloadUser(true);
+        setReloadFeed(true);
+        alert("CAPTURADO");
       })
       .catch((err) => {
         alert(err.response.data.message);
