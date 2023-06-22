@@ -1,12 +1,18 @@
 .inventory__container {
-    margin: 120px 10px 90px 10px;
-    width: 100%;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    background-color: #212121;
-  }
-  
+  margin: 120px 10px 90px 10px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  background-color: #212121;
+}
+
+.inventory__item {
+  width: calc(100% / 3);
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
