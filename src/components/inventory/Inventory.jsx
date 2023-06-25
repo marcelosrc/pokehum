@@ -1,5 +1,5 @@
 import React from "react";
-import "../styling/Inventory.scss";
+import "../../styling/Inventory.scss";
 import axios from "axios";
 
 function Inventory() {

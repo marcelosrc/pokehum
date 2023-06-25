@@ -1,7 +1,8 @@
 import React from "react";
-import { UserContext } from "../pages/Home";
-import "../styling/Greetings.scss";
+import { UserContext } from "../../pages/Home";
+import "../../styling/Greetings.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Greetings() {
   const { currentUser } = React.useContext(UserContext);
@@ -23,8 +24,9 @@ function Greetings() {
       <p>Boa noite, {currentUser.username}</p>
       <p>Puta dia bão pra pegar uns otários e meter no cativeiro, hein?</p>
       <p>
-        Quem vai ser sua primeira vítima hoje? Clique aqui e descubra quem está
-        panguando por aí.
+        Quem vai ser sua primeira vítima hoje?{" "}
+        <Link to="/people">Clique aqui</Link> e descubra quem está panguando por
+        aí.
       </p>
       <p>
         A propósito, sabia que {leader} é o jogador com mais crias capturadas em

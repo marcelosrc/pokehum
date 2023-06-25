@@ -1,0 +1,33 @@
+.shelter__container {
+  margin: 120px 10px 0px 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #212121;
+}
+
+.shelter__entry {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px #303030 solid;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shelter__entry-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.shelter__entry-info-picture {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+
+.shelter__entry-info-credentials {
+  display: flex;
+  flex-direction: column;
+}

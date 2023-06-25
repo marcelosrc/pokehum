@@ -1,7 +1,7 @@
 import React from "react";
-import "../styling/Profile.scss";
-import { UserContext } from "../pages/Home";
-import defaultUserPicture from "../media/default.png";
+import "../../styling/Profile.scss";
+import { UserContext } from "../../pages/Home";
+import defaultUserPicture from "../../media/default.png";
 
 function Profile() {
   const { currentUser } = React.useContext(UserContext);

@@ -1,9 +1,9 @@
 import React from "react";
-import "../styling/Common.scss";
-import "../styling/People.scss";
+import "../../styling/Common.scss";
+import "../../styling/People.scss";
 import axios from "axios";
-import { UserContext } from "../pages/Home";
-import defaultUserPicture from "../media/default.png";
+import { UserContext } from "../../pages/Home";
+import defaultUserPicture from "../../media/default.png";
 
 function People() {
   const { setReloadUser } = React.useContext(UserContext);

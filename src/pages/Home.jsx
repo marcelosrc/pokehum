@@ -1,10 +1,8 @@
 import React from "react";
-import Profile from "../components/Profile";
-import Greetings from "../components/Greetings";
-import People from "../components/People";
-import Footer from "../components/Footer";
-import Inventory from "../components/Inventory";
 import "../styling/Home.scss";
+import Profile from "../components/home/Profile";
+import Footer from "../components/home/Footer";
+import { Outlet } from "react-router-dom";
 import axios from "axios";
 
 export const UserContext = React.createContext({});
@@ -34,11 +32,7 @@ function Home() {
     <UserContext.Provider value={{ currentUser, setReloadUser }}>
       <div className="home__container">
         <Profile />
-        <div className="main_window__container">
-          <Greetings />
-          <People />
-          <Inventory />
-        </div>
+        <Outlet />
         <Footer />
       </div>
     </UserContext.Provider>
