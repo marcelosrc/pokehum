@@ -1,0 +1,30 @@
+.arena__container {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.arena__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arena__fighters {
+  display: flex;
+  gap: 30px;
+}
+
+.arena__fighters > img {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+}

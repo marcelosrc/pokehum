@@ -1,16 +1,18 @@
 import React from "react";
+import axios from "axios";
 import "../../styling/Common.scss";
 import "../../styling/People.scss";
-import axios from "axios";
 import { UserContext } from "../../pages/Home";
 import defaultUserPicture from "../../media/default.png";
+import Arena from "../arena/Arena";
 
 function People() {
-  const { setReloadUser } = React.useContext(UserContext);
+  const { currentUser, setReloadUser } = React.useContext(UserContext);
   const [anyUsers, setAnyUsers] = React.useState([]);
-  const [entryId, setEntryId] = React.useState();
+  const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
   const [showActionMenu, setShowActionMenu] = React.useState();
   const [reloadFeed, setReloadFeed] = React.useState(false);
+  const [arena, showArena] = React.useState(false);
 
   React.useEffect(() => {
     axios
@@ -24,31 +26,19 @@ function People() {
       });
   }, [setReloadUser, reloadFeed]);
 
-  const capture = (anyUserId) => {
-    axios
-      .post("/gm/capture/" + anyUserId)
-      .then((res) => {
-        setReloadUser(true);
-        setReloadFeed(true);
-        alert("CAPTURADO");
-      })
-      .catch((err) => {
-        alert(err.response.data.message);
-      });
+  const callArena = () => {
+    showArena(true);
   };
 
   const cancel = () => {
     alert("CONSERTAR");
   };
 
-  const callActionMenu = (anyUserId) => {
-    setEntryId(anyUserId);
+  const callActionMenu = (anyUser) => {
+    setCurrentAnyUser(anyUser);
     setShowActionMenu(
       <div className="people__entry-actionarea">
-        <button
-          className="common-accept-button"
-          onClick={() => capture(anyUserId)}
-        >
+        <button className="common-accept-button" onClick={callArena}>
           Capturar
         </button>
         <button className="common-deny-button" onClick={cancel}>
@@ -62,7 +52,7 @@ function People() {
     <div
       className="people__entry"
       key={anyUser.id}
-      onClick={() => callActionMenu(anyUser.id)}
+      onClick={() => callActionMenu(anyUser)}
     >
       <div className="people__entry-info">
         <img
@@ -78,11 +68,24 @@ function People() {
           </p>
         </div>
       </div>
-      {entryId === anyUser.id ? showActionMenu : null}
+      {currentAnyUser.id === anyUser.id ? showActionMenu : null}
     </div>
   ));
 
-  return <div className="people__container">{anyUserEntry}</div>;
+  return (
+    <div className="people__container">
+      {anyUserEntry}
+      {arena ? (
+        <Arena
+          currentAnyUser={currentAnyUser}
+          currentUser={currentUser}
+          setReloadUser={setReloadUser}
+          setReloadFeed={setReloadFeed}
+          showArena={showArena}
+        />
+      ) : null}
+    </div>
+  );
 }
 
 export default People;
