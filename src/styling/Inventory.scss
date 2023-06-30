@@ -1,5 +1,6 @@
 .inventory__container {
-  margin: 120px 10px 0px 10px;
+  margin: 120px 10px 90px 10px;
+  height: calc(100vh - 210px);
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -9,9 +10,10 @@
 
 .inventory__item {
   width: calc(100% / 3);
-  height: 100px;
+  height: calc(100% / 4);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 10px;
   text-align: center;
 }
