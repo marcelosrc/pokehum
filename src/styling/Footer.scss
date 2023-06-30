@@ -1,7 +1,7 @@
 .footer__container {
-  position: fixed;
-  bottom: 0;
-  height: 80px;
+  flex-grow: 1;
+  min-height: 80px;
+  max-height: 80px;
   width: 100%;
   background-color: #212121;
   display: flex;
@@ -14,4 +14,12 @@
   justify-content: center;
   align-items: center;
   color: gray;
+}
+
+.footer__selected-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #303030;
+  color: #212121;
 }

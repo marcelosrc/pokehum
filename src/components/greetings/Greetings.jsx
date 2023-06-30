@@ -1,5 +1,6 @@
 import React from "react";
 import { UserContext } from "../../pages/Home";
+import "../../styling/Common.scss";
 import "../../styling/Greetings.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -28,16 +29,25 @@ function Greetings() {
         <Link to="/people">Clique aqui</Link> e descubra quem está panguando por
         aí.
       </p>
-      <p>
-        A propósito, sabia que {leader} é o jogador com mais crias capturadas em
-        seu "abrigo"?
-      </p>
-      <p>É isso mesmo?</p>
-      <p>
-        Você não está nem nos 10 primeiros, seu lixo. Desiste e volta para as
-        suas discussões estúpidas de Twitter.
-      </p>
-      <p>É o que você merece.</p>
+      {currentUser.username === leader ? (
+        <>
+          <p>
+            A propósito, sabia que você é o jogador com o "albergue" mais
+            recheado de gente?
+          </p>
+          <p>Tá com tempo livre, né?</p>
+        </>
+      ) : (
+        <>
+          <p>A propósito, sabia que </p> <p className="magenta">{leader}</p>{" "}
+          <p>é o jogador com mais crias capturadas em seu "abrigo"?</p>
+          <p>É isso mesmo?</p>
+          <p>
+            Lixo. Desiste e volta para as suas discussões estúpidas de Twitter.
+          </p>
+          <p>É o que você merece.</p>
+        </>
+      )}
     </div>
   );
 }

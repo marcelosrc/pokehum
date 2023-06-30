@@ -1,11 +1,11 @@
 .greetings__container {
-  margin: 120px 10px 90px 10px;
-  height: calc(100vh - 250px);
+  flex-grow: 5;
+  margin: 10px;
   border-radius: 10px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px;
   gap: 10px;
   background-color: #212121;
 }

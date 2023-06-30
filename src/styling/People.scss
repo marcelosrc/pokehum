@@ -1,13 +1,15 @@
 .people__container {
-  margin: 120px 10px 90px 10px;
+  flex-grow: 5;
+  margin: 10px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   background-color: #212121;
+  overflow: scroll;
 }
 
 .people__entry {
-  width: 100%;
+  width: calc(100% - 20px);
   padding: 10px;
   border-bottom: 1px #303030 solid;
   display: flex;
