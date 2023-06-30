@@ -1,29 +1,31 @@
 import React from "react";
 import axios from "axios";
+import "../../styling/Common.scss";
 import "../../styling/Arena.scss";
 import defaultUserPicture from "../../media/default.png";
 
 function Arena(props) {
   const [result, setResult] = React.useState();
 
-  React.useEffect(() => {
-    if (Math.random() > 0.9) {
-      axios
-        .post("/gm/capture/" + props.currentAnyUser.id)
-        .then(() => {
+  const combat = () => {
+    axios
+      .post("/gm/capture/" + props.currentAnyUser.id)
+      .then((res) => {
+        if (res.data.message === "CAPTURED") {
           setResult(props.currentUser.username);
-          props.setReloadUser(true);
-          props.setReloadFeed(true);
-        })
-        .catch((err) => {
-          alert(err.response.data.message);
-        });
-    } else {
-      setResult(props.currentAnyUser.username);
-    }
-  }, [result, setResult, props]);
+        } else {
+          setResult(props.currentAnyUser.username);
+        }
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
+    props.setReloadUser(true);
+    props.setReloadFeed(true);
+  };
 
   const closeArena = () => {
+    setResult(null);
     props.showArena(false);
   };
 
@@ -49,6 +51,9 @@ function Arena(props) {
             <img src={defaultUserPicture} alt={props.currentUser.username} />
             <img src={defaultUserPicture} alt={props.currentAnyUser.username} />
           </div>
+          <button className="common-accept-button" onClick={combat}>
+            Capturar
+          </button>
         </div>
       )}
     </>

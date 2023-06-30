@@ -8,6 +8,8 @@ import defaultUserPicture from "../../media/default.png";
 function Shelter() {
   const { setReloadUser } = React.useContext(UserContext);
   const [shelter, setShelter] = React.useState([]);
+  const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
+  const [showActionMenu, setShowActionMenu] = React.useState();
   const [reloadFeed, setReloadFeed] = React.useState(false);
 
   React.useEffect(() => {
@@ -22,8 +24,45 @@ function Shelter() {
       });
   }, [setReloadUser, reloadFeed]);
 
+  const setFree = (sheltered) => {
+    axios
+      .post("/gm/setfree/" + sheltered.id)
+      .then(() => {
+        setReloadUser(true);
+        setReloadFeed(true);
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
+  };
+
+  const cancel = () => {
+    alert("CONSERTAR");
+  };
+
+  const callActionMenu = (sheltered) => {
+    setCurrentAnyUser(sheltered);
+    setShowActionMenu(
+      <div className="people__entry-actionarea">
+        <button
+          className="common-accept-button"
+          onClick={() => setFree(sheltered)}
+        >
+          Soltar
+        </button>
+        <button className="common-deny-button" onClick={cancel}>
+          Cancelar
+        </button>
+      </div>
+    );
+  };
+
   const shelterEntries = shelter.map((sheltered) => (
-    <div className="shelter__entry" key={sheltered.id}>
+    <div
+      className="shelter__entry"
+      key={sheltered.id}
+      onClick={() => callActionMenu(sheltered)}
+    >
       <div className="shelter__entry-info">
         <img
           className="shelter__entry-info-picture"
@@ -34,6 +73,7 @@ function Shelter() {
           <p>{sheltered.username}</p>
         </div>
       </div>
+      {currentAnyUser.id === sheltered.id ? showActionMenu : null}
     </div>
   ));
 
