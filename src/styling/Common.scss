@@ -41,12 +41,20 @@ button {
   background-color: grey;
 }
 
+a {
+  text-decoration: none;
+}
+
+.turquoise {
+  color: turquoise;
+}
+
 .common-accept-button {
   width: 100px;
   height: 50px;
   border-radius: 5px;
   border: 0px;
-  background-color: rgb(187, 255, 0);
+  background-color: turquoise;
 }
 
 .common-deny-button {
