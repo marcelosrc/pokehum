@@ -2,17 +2,22 @@ import React from "react";
 import axios from "axios";
 import "../../styling/Common.scss";
 import "../../styling/People.scss";
-import { UserContext } from "../../pages/Home";
+import { UserContext, PageContext } from "../../pages/Home";
 import defaultUserPicture from "../../media/default.png";
 import Arena from "../arena/Arena";
 
 function People() {
   const { currentUser, setReloadUser } = React.useContext(UserContext);
+  const { setCurrentPage } = React.useContext(PageContext);
   const [anyUsers, setAnyUsers] = React.useState([]);
   const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
   const [showActionMenu, setShowActionMenu] = React.useState();
   const [reloadFeed, setReloadFeed] = React.useState(false);
   const [arena, showArena] = React.useState(false);
+
+  React.useEffect(() => {
+    setCurrentPage("PPL");
+  }, [setCurrentPage]);
 
   React.useEffect(() => {
     axios

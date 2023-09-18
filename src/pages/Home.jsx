@@ -6,10 +6,12 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 
 export const UserContext = React.createContext({});
+export const PageContext = React.createContext({});
 
 function Home() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [reloadUser, setReloadUser] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState("");
 
   //TEMPORARIO
   React.useEffect(() => {
@@ -30,11 +32,13 @@ function Home() {
 
   return (
     <UserContext.Provider value={{ currentUser, setReloadUser }}>
-      <div className="home__container">
-        <Profile />
-        <Outlet />
-        <Footer />
-      </div>
+      <PageContext.Provider value={{ currentPage, setCurrentPage }}>
+        <div className="home__container">
+          <Profile />
+          <Outlet />
+          <Footer />
+        </div>
+      </PageContext.Provider>
     </UserContext.Provider>
   );
 }

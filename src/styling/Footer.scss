@@ -2,24 +2,25 @@
   flex-grow: 1;
   min-height: 80px;
   max-height: 80px;
-  width: 100%;
+  width: 100vw;
   background-color: #212121;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
 }
 
 .footer__button {
+  height: 80px;
+  width: calc(100vw / 4);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: gray;
 }
 
-.footer__selected-button {
+.footer__inverted-button {
+  height: 80px;
+  width: calc(100vw / 4);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #303030;
   color: #212121;
+  background-color: #303030;
 }

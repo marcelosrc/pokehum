@@ -2,15 +2,20 @@ import React from "react";
 import "../../styling/Common.scss";
 import "../../styling/Shelter.scss";
 import axios from "axios";
-import { UserContext } from "../../pages/Home";
+import { UserContext, PageContext } from "../../pages/Home";
 import defaultUserPicture from "../../media/default.png";
 
 function Shelter() {
   const { setReloadUser } = React.useContext(UserContext);
+  const { setCurrentPage } = React.useContext(PageContext);
   const [shelter, setShelter] = React.useState([]);
   const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
   const [showActionMenu, setShowActionMenu] = React.useState();
   const [reloadFeed, setReloadFeed] = React.useState(false);
+
+  React.useEffect(() => {
+    setCurrentPage("SHT");
+  }, [setCurrentPage]);
 
   React.useEffect(() => {
     axios

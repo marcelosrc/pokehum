@@ -1,5 +1,5 @@
 import React from "react";
-import { UserContext } from "../../pages/Home";
+import { UserContext, PageContext } from "../../pages/Home";
 import "../../styling/Common.scss";
 import "../../styling/Greetings.scss";
 import axios from "axios";
@@ -7,7 +7,12 @@ import { Link } from "react-router-dom";
 
 function Greetings() {
   const { currentUser } = React.useContext(UserContext);
-  const [leader, setLeader] = React.useState("");
+  const { setCurrentPage } = React.useContext(PageContext);
+  const [leader, setLeader] = React.useState("HOM");
+
+  React.useEffect(() => {
+    setCurrentPage("HOM");
+  }, [setCurrentPage]);
 
   React.useEffect(() => {
     axios

@@ -1,9 +1,15 @@
 import React from "react";
 import "../../styling/Inventory.scss";
 import axios from "axios";
+import { PageContext } from "../../pages/Home";
 
 function Inventory() {
+  const { setCurrentPage } = React.useContext(PageContext);
   const [inventory, setInventory] = React.useState([]);
+
+  React.useEffect(() => {
+    setCurrentPage("INV");
+  }, [setCurrentPage]);
 
   React.useEffect(() => {
     axios

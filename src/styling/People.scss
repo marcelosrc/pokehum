@@ -9,12 +9,13 @@
 }
 
 .people__entry {
-  width: calc(100% - 20px);
+  width: 100%;
   padding: 10px;
   border-bottom: 1px #303030 solid;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-sizing: border-box;
 }
 
 .people__entry-info {
