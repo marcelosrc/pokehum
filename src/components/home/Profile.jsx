@@ -11,14 +11,18 @@ function Profile() {
     <div className="profile__container">
       <img
         className="profile__picture"
-        src={defaultUserPicture}
-        alt={currentUser.username}
+        src={
+          currentUser.profile_pic_path
+            ? currentUser.profile_pic_path
+            : defaultUserPicture
+        }
+        alt={currentUser.name}
       />
       <div className="profile__credentials">
-        <p className="turquoise">{currentUser.username}</p>
+        <p className="turquoise">{currentUser.name}</p>
         <p>
-          {currentUser.captured_ppl_count}{" "}
-          {currentUser.captured_ppl_count === 1 ? "capturado" : "capturados"}
+          {currentUser.captured_ppl?.length}{" "}
+          {currentUser.captured_ppl?.length === 1 ? "capturado" : "capturados"}
         </p>
       </div>
     </div>

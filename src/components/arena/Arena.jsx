@@ -12,9 +12,9 @@ function Arena(props) {
       .post("/gm/capture/" + props.currentAnyUser.id)
       .then((res) => {
         if (res.data.message === "CAPTURED") {
-          setResult(props.currentUser.username);
+          setResult(props.currentUser.name);
         } else {
-          setResult(props.currentAnyUser.username);
+          setResult(props.currentAnyUser.name);
         }
       })
       .catch((err) => {
@@ -43,13 +43,13 @@ function Arena(props) {
       ) : (
         <div className="arena__container">
           <div className="arena__title">
-            <h1>{props.currentUser.username}</h1>
+            <h1>{props.currentUser.name}</h1>
             <h1>X</h1>
-            <h1>{props.currentAnyUser.username}</h1>
+            <h1>{props.currentAnyUser.name}</h1>
           </div>
           <div className="arena__fighters">
-            <img src={defaultUserPicture} alt={props.currentUser.username} />
-            <img src={defaultUserPicture} alt={props.currentAnyUser.username} />
+            <img src={defaultUserPicture} alt={props.currentUser.name} />
+            <img src={defaultUserPicture} alt={props.currentAnyUser.name} />
           </div>
           <button className="common-accept-button" onClick={combat}>
             Capturar

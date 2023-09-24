@@ -18,7 +18,7 @@ function Greetings() {
     axios
       .get("/gm/ranking")
       .then((res) => {
-        setLeader(res.data.message[0].username);
+        setLeader(res.data.message[0].name);
       })
       .catch((err) => {
         alert(err.response.data.message);
@@ -27,14 +27,14 @@ function Greetings() {
 
   return (
     <div className="greetings__container">
-      <p>Boa noite, {currentUser.username}</p>
+      <p>Boa noite, {currentUser.name}</p>
       <p>Puta dia bão pra pegar uns otários e meter no cativeiro, hein?</p>
       <p>
         Quem vai ser sua primeira vítima hoje?{" "}
         <Link to="/people">Clique aqui</Link> e descubra quem está panguando por
         aí.
       </p>
-      {currentUser.username === leader ? (
+      {currentUser.name === leader ? (
         <>
           <p>
             A propósito, sabia que você é o jogador com o "albergue" mais
@@ -44,7 +44,8 @@ function Greetings() {
         </>
       ) : (
         <>
-          <p>A propósito, sabia que </p> <p className="magenta">{leader}</p>{" "}
+          <p>A propósito, sabia que </p>{" "}
+          <p className="magenta">{leader ? leader : "NINGUÉM"}</p>{" "}
           <p>é o jogador com mais crias capturadas em seu "abrigo"?</p>
           <p>É isso mesmo?</p>
           <p>

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styling/Common.scss";
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Greetings from "./components/greetings/Greetings";
 import Shelter from "./components/shelter/Shelter";
@@ -11,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Greetings />} />
           <Route path="shelter" element={<Shelter />} />

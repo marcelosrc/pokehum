@@ -72,10 +72,10 @@ function Shelter() {
         <img
           className="shelter__entry-info-picture"
           src={defaultUserPicture}
-          alt={sheltered.username}
+          alt={sheltered.name}
         />
         <div className="shelter__entry-info-credentials">
-          <p>{sheltered.username}</p>
+          <p>{sheltered.name}</p>
         </div>
       </div>
       {currentAnyUser.id === sheltered.id ? showActionMenu : null}

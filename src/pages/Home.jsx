@@ -13,11 +13,6 @@ function Home() {
   const [reloadUser, setReloadUser] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState("");
 
-  //TEMPORARIO
-  React.useEffect(() => {
-    axios.post("/login", { username: "marcelosrc", password: "123" });
-  }, []);
-
   React.useEffect(() => {
     axios
       .get("/users/me")

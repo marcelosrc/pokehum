@@ -63,13 +63,13 @@ function People() {
         <img
           className="people__entry-info-picture"
           src={defaultUserPicture}
-          alt={anyUser.username}
+          alt={anyUser.name}
         />
         <div className="people__entry-info-credentials">
-          <p>{anyUser.username}</p>
+          <p>{anyUser.name}</p>
           <p>
-            {anyUser.captured_ppl_count}{" "}
-            {anyUser.captured_ppl_count === 1 ? "capturado" : "capturados"}
+            {anyUser.captured_ppl?.length}{" "}
+            {anyUser.captured_ppl?.length === 1 ? "capturado" : "capturados"}
           </p>
         </div>
       </div>
