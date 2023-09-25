@@ -12,9 +12,9 @@ function Arena(props) {
       .post("/gm/capture/" + props.currentAnyUser.id)
       .then((res) => {
         if (res.data.message === "CAPTURED") {
-          setResult(props.currentUser.name);
+          setResult(props.currentUser);
         } else {
-          setResult(props.currentAnyUser.name);
+          setResult(props.currentAnyUser);
         }
       })
       .catch((err) => {
@@ -34,10 +34,17 @@ function Arena(props) {
       {result ? (
         <div className="arena__container" onClick={closeArena}>
           <div className="arena__title">
-            <h1>{result}</h1>
+            <h1>{result.name}</h1>
           </div>
           <div className="arena__fighters">
-            <img src={defaultUserPicture} alt={result} />
+            <img
+              src={
+                result.profile_pic_path
+                  ? result.profile_pic_path
+                  : defaultUserPicture
+              }
+              alt={result.name}
+            />
           </div>
         </div>
       ) : (
@@ -48,8 +55,22 @@ function Arena(props) {
             <h1>{props.currentAnyUser.name}</h1>
           </div>
           <div className="arena__fighters">
-            <img src={defaultUserPicture} alt={props.currentUser.name} />
-            <img src={defaultUserPicture} alt={props.currentAnyUser.name} />
+            <img
+              src={
+                props.currentUser.profile_pic_path
+                  ? props.currentUser.profile_pic_path
+                  : defaultUserPicture
+              }
+              alt={props.currentUser.name}
+            />
+            <img
+              src={
+                props.currentAnyUser.profile_pic_path
+                  ? props.currentAnyUser.profile_pic_path
+                  : defaultUserPicture
+              }
+              alt={props.currentAnyUser.name}
+            />
           </div>
           <button className="common-accept-button" onClick={combat}>
             Capturar

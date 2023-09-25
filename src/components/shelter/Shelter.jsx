@@ -71,7 +71,11 @@ function Shelter() {
       <div className="shelter__entry-info">
         <img
           className="shelter__entry-info-picture"
-          src={defaultUserPicture}
+          src={
+            sheltered.profile_pic_path
+              ? sheltered.profile_pic_path
+              : defaultUserPicture
+          }
           alt={sheltered.name}
         />
         <div className="shelter__entry-info-credentials">

@@ -21,7 +21,7 @@ function People() {
 
   React.useEffect(() => {
     axios
-      .get("/users/any")
+      .get("/gm/people")
       .then((res) => {
         setAnyUsers(res.data.message);
         setReloadFeed(false);
@@ -62,7 +62,11 @@ function People() {
       <div className="people__entry-info">
         <img
           className="people__entry-info-picture"
-          src={defaultUserPicture}
+          src={
+            anyUser.profile_pic_path
+              ? anyUser.profile_pic_path
+              : defaultUserPicture
+          }
           alt={anyUser.name}
         />
         <div className="people__entry-info-credentials">

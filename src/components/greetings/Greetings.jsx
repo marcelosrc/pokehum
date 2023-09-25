@@ -44,8 +44,7 @@ function Greetings() {
         </>
       ) : (
         <>
-          <p>A propósito, sabia que </p>{" "}
-          <p className="magenta">{leader ? leader : "NINGUÉM"}</p>{" "}
+          <p>A propósito, sabia que </p> <p className="magenta">{leader}</p>{" "}
           <p>é o jogador com mais crias capturadas em seu "abrigo"?</p>
           <p>É isso mesmo?</p>
           <p>
