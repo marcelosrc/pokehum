@@ -1,11 +1,13 @@
 import React from "react";
 import "../../styling/Inventory.scss";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { PageContext } from "../../pages/Home";
 
 function Inventory() {
   const { setCurrentPage } = React.useContext(PageContext);
   const [inventory, setInventory] = React.useState([]);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     setCurrentPage("INV");
@@ -17,10 +19,10 @@ function Inventory() {
       .then((res) => {
         setInventory(res.data.message);
       })
-      .catch((err) => {
-        alert(err.response.data.message);
+      .catch(() => {
+        navigate("/login");
       });
-  }, []);
+  }, [navigate]);
 
   const showInventory = inventory.map((item) => (
     <div className="inventory__item" key={item.id}>

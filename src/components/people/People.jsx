@@ -1,7 +1,8 @@
 import React from "react";
-import axios from "axios";
 import "../../styling/Common.scss";
 import "../../styling/People.scss";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { UserContext, PageContext } from "../../pages/Home";
 import defaultUserPicture from "../../media/default.png";
 import Arena from "../arena/Arena";
@@ -14,6 +15,7 @@ function People() {
   const [showActionMenu, setShowActionMenu] = React.useState();
   const [reloadFeed, setReloadFeed] = React.useState(false);
   const [arena, showArena] = React.useState(false);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     setCurrentPage("PPL");
@@ -26,10 +28,10 @@ function People() {
         setAnyUsers(res.data.message);
         setReloadFeed(false);
       })
-      .catch((err) => {
-        alert(err.response.data.message);
+      .catch(() => {
+        navigate("/login");
       });
-  }, [setReloadUser, reloadFeed]);
+  }, [setReloadUser, reloadFeed, navigate]);
 
   const callArena = () => {
     showArena(true);

@@ -1,11 +1,13 @@
 import React from "react";
-import axios from "axios";
 import "../../styling/Common.scss";
 import "../../styling/Arena.scss";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import defaultUserPicture from "../../media/default.png";
 
 function Arena(props) {
   const [result, setResult] = React.useState();
+  const navigate = useNavigate();
 
   const combat = () => {
     axios
@@ -17,8 +19,8 @@ function Arena(props) {
           setResult(props.currentAnyUser);
         }
       })
-      .catch((err) => {
-        alert(err.response.data.message);
+      .catch(() => {
+        navigate("/login");
       });
     props.setReloadUser(true);
     props.setReloadFeed(true);

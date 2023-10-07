@@ -1,14 +1,16 @@
 import React from "react";
-import { UserContext, PageContext } from "../../pages/Home";
 import "../../styling/Common.scss";
 import "../../styling/Greetings.scss";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { UserContext, PageContext } from "../../pages/Home";
 
 function Greetings() {
   const { currentUser } = React.useContext(UserContext);
   const { setCurrentPage } = React.useContext(PageContext);
   const [leader, setLeader] = React.useState("HOM");
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     setCurrentPage("HOM");
@@ -20,10 +22,10 @@ function Greetings() {
       .then((res) => {
         setLeader(res.data.message[0].name);
       })
-      .catch((err) => {
-        alert(err.response.data.message);
+      .catch(() => {
+        navigate("/login");
       });
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="greetings__container">

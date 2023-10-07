@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styling/Common.scss";
 import "../../styling/Shelter.scss";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext, PageContext } from "../../pages/Home";
 import defaultUserPicture from "../../media/default.png";
@@ -12,6 +13,7 @@ function Shelter() {
   const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
   const [showActionMenu, setShowActionMenu] = React.useState();
   const [reloadFeed, setReloadFeed] = React.useState(false);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     setCurrentPage("SHT");
@@ -24,10 +26,10 @@ function Shelter() {
         setShelter(res.data.message);
         setReloadFeed(false);
       })
-      .catch((err) => {
-        alert(err.response.data.message);
+      .catch(() => {
+        navigate("/login");
       });
-  }, [setReloadUser, reloadFeed]);
+  }, [setReloadUser, reloadFeed, navigate]);
 
   const setFree = (sheltered) => {
     axios
