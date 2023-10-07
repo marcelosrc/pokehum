@@ -38,7 +38,7 @@ function People() {
   };
 
   const cancel = () => {
-    alert("CONSERTAR");
+    setShowActionMenu(<></>);
   };
 
   const callActionMenu = (anyUser) => {

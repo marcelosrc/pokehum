@@ -29,7 +29,7 @@ function Greetings() {
 
   return (
     <div className="greetings__container">
-      <p>Boa noite, {currentUser.name}</p>
+      <p>Boa noite, {currentUser.name}!</p>
       <p>Puta dia bão pra pegar uns otários e meter no cativeiro, hein?</p>
       <p>
         Quem vai ser sua primeira vítima hoje?{" "}
@@ -46,8 +46,11 @@ function Greetings() {
         </>
       ) : (
         <>
-          <p>A propósito, sabia que </p> <p className="magenta">{leader}</p>{" "}
-          <p>é o jogador com mais crias capturadas em seu "abrigo"?</p>
+          <p>
+            A propósito, sabia que
+            <span className="magenta"> {leader} </span>é o jogador com mais crias
+            capturadas em seu "abrigo"?
+          </p>
           <p>É isso mesmo?</p>
           <p>
             Lixo. Desiste e volta para as suas discussões estúpidas de Twitter.
