@@ -12,7 +12,7 @@ function People() {
   const { setCurrentPage } = React.useContext(PageContext);
   const [anyUsers, setAnyUsers] = React.useState([]);
   const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
-  const [showActionMenu, setShowActionMenu] = React.useState();
+  const [actionMenu, setActionMenu] = React.useState(false);
   const [reloadFeed, setReloadFeed] = React.useState(false);
   const [arena, showArena] = React.useState(false);
   const navigate = useNavigate();
@@ -37,30 +37,21 @@ function People() {
     showArena(true);
   };
 
-  const cancel = () => {
-    setShowActionMenu(<></>);
-  };
-
-  const callActionMenu = (anyUser) => {
+  const showActionMenu = (anyUser) => {
     setCurrentAnyUser(anyUser);
-    setShowActionMenu(
-      <div className="people__entry-actionarea">
-        <button className="common-accept-button" onClick={callArena}>
-          Capturar
-        </button>
-        <button className="common-deny-button" onClick={cancel}>
-          Cancelar
-        </button>
-      </div>
-    );
+    if (!actionMenu) {
+      setActionMenu(true);
+    } else {
+      setActionMenu(false);
+    }
   };
 
-  const anyUserEntry = anyUsers.map((anyUser) => (
-    <div
-      className="people__entry"
-      key={anyUser.id}
-      onClick={() => callActionMenu(anyUser)}
-    >
+  const cancel = () => {
+    setActionMenu(false);
+  };
+
+  const anyUsersEntries = anyUsers.map((anyUser) => (
+    <div className="people__entry" key={anyUser.id}>
       <div className="people__entry-info">
         <img
           className="people__entry-info-picture"
@@ -70,6 +61,7 @@ function People() {
               : defaultUserPicture
           }
           alt={anyUser.name}
+          onClick={() => showActionMenu(anyUser)}
         />
         <div className="people__entry-info-credentials">
           <p>{anyUser.name}</p>
@@ -79,17 +71,26 @@ function People() {
           </p>
         </div>
       </div>
-      {currentAnyUser.id === anyUser.id ? showActionMenu : null}
+      {actionMenu && currentAnyUser.id === anyUser.id ? (
+        <div className="people__entry-actionarea">
+          <button className="common-accept-button" onClick={callArena}>
+            Capturar
+          </button>
+          <button className="common-deny-button" onClick={cancel}>
+            Cancelar
+          </button>
+        </div>
+      ) : null}
     </div>
   ));
 
   return (
     <div className="people__container">
-      {anyUserEntry}
+      {anyUsersEntries}
       {arena ? (
         <Arena
-          currentAnyUser={currentAnyUser}
           currentUser={currentUser}
+          currentAnyUser={currentAnyUser}
           setReloadUser={setReloadUser}
           setReloadFeed={setReloadFeed}
           showArena={showArena}

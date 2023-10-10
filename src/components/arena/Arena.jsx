@@ -18,12 +18,12 @@ function Arena(props) {
         } else {
           setResult(props.currentAnyUser);
         }
+        props.setReloadUser(true);
+        props.setReloadFeed(true);
       })
       .catch(() => {
         navigate("/login");
       });
-    props.setReloadUser(true);
-    props.setReloadFeed(true);
   };
 
   const closeArena = () => {
@@ -76,6 +76,9 @@ function Arena(props) {
           </div>
           <button className="common-accept-button" onClick={combat}>
             Capturar
+          </button>
+          <button className="common-deny-button" onClick={closeArena}>
+            Cancelar
           </button>
         </div>
       )}

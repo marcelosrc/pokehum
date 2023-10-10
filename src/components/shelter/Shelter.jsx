@@ -11,7 +11,7 @@ function Shelter() {
   const { setCurrentPage } = React.useContext(PageContext);
   const [shelter, setShelter] = React.useState([]);
   const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
-  const [showActionMenu, setShowActionMenu] = React.useState();
+  const [actionMenu, setActionMenu] = React.useState();
   const [reloadFeed, setReloadFeed] = React.useState(false);
   const navigate = useNavigate();
 
@@ -38,38 +38,26 @@ function Shelter() {
         setReloadUser(true);
         setReloadFeed(true);
       })
-      .catch((err) => {
-        alert(err.response.data.message);
+      .catch(() => {
+        navigate("/login");
       });
   };
 
-  const cancel = () => {
-    alert("CONSERTAR");
+  const showActionMenu = (sheltered) => {
+    setCurrentAnyUser(sheltered);
+    if (!actionMenu) {
+      setActionMenu(true);
+    } else {
+      setActionMenu(false);
+    }
   };
 
-  const callActionMenu = (sheltered) => {
-    setCurrentAnyUser(sheltered);
-    setShowActionMenu(
-      <div className="people__entry-actionarea">
-        <button
-          className="common-accept-button"
-          onClick={() => setFree(sheltered)}
-        >
-          Soltar
-        </button>
-        <button className="common-deny-button" onClick={cancel}>
-          Cancelar
-        </button>
-      </div>
-    );
+  const cancel = () => {
+    setActionMenu(false);
   };
 
   const shelterEntries = shelter.map((sheltered) => (
-    <div
-      className="shelter__entry"
-      key={sheltered.id}
-      onClick={() => callActionMenu(sheltered)}
-    >
+    <div className="shelter__entry" key={sheltered.id}>
       <div className="shelter__entry-info">
         <img
           className="shelter__entry-info-picture"
@@ -79,12 +67,25 @@ function Shelter() {
               : defaultUserPicture
           }
           alt={sheltered.name}
+          onClick={() => showActionMenu(sheltered)}
         />
         <div className="shelter__entry-info-credentials">
           <p>{sheltered.name}</p>
         </div>
       </div>
-      {currentAnyUser.id === sheltered.id ? showActionMenu : null}
+      {actionMenu && currentAnyUser.id === sheltered.id ? (
+        <div className="people__entry-actionarea">
+          <button
+            className="common-accept-button"
+            onClick={() => setFree(sheltered)}
+          >
+            Soltar
+          </button>
+          <button className="common-deny-button" onClick={cancel}>
+            Cancelar
+          </button>
+        </div>
+      ) : null}
     </div>
   ));
 

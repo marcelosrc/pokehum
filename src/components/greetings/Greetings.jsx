@@ -53,7 +53,7 @@ function Greetings() {
           </p>
           <p>É isso mesmo?</p>
           <p>
-            Lixo. Desiste e volta para as suas discussões estúpidas de Twitter.
+            Por que não desiste e volta para as suas discussões estúpidas de Twitter?
           </p>
           <p>É o que você merece.</p>
         </>
