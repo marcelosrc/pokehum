@@ -11,7 +11,7 @@ function Shelter() {
   const { setCurrentPage } = React.useContext(PageContext);
   const [shelter, setShelter] = React.useState([]);
   const [currentAnyUser, setCurrentAnyUser] = React.useState([]);
-  const [actionMenu, setActionMenu] = React.useState();
+  const [actionMenu, setActionMenu] = React.useState(null);
   const [reloadFeed, setReloadFeed] = React.useState(false);
   const navigate = useNavigate();
 
@@ -45,11 +45,7 @@ function Shelter() {
 
   const showActionMenu = (sheltered) => {
     setCurrentAnyUser(sheltered);
-    if (!actionMenu) {
-      setActionMenu(true);
-    } else {
-      setActionMenu(false);
-    }
+    setActionMenu(true);
   };
 
   const cancel = () => {

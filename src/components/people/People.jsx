@@ -39,11 +39,7 @@ function People() {
 
   const showActionMenu = (anyUser) => {
     setCurrentAnyUser(anyUser);
-    if (!actionMenu) {
-      setActionMenu(true);
-    } else {
-      setActionMenu(false);
-    }
+    setActionMenu(true);
   };
 
   const cancel = () => {

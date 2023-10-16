@@ -9,7 +9,7 @@ import { UserContext, PageContext } from "../../pages/Home";
 function Greetings() {
   const { currentUser } = React.useContext(UserContext);
   const { setCurrentPage } = React.useContext(PageContext);
-  const [leader, setLeader] = React.useState("HOM");
+  const [leader, setLeader] = React.useState({});
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -20,7 +20,7 @@ function Greetings() {
     axios
       .get("/gm/ranking")
       .then((res) => {
-        setLeader(res.data.message[0].name);
+        setLeader(res.data.message[0]);
       })
       .catch(() => {
         navigate("/login");
@@ -36,11 +36,16 @@ function Greetings() {
         <Link to="/people">Clique aqui</Link> e descubra quem está panguando por
         aí.
       </p>
-      {currentUser.name === leader ? (
+      {leader.captured_ppl_count === null ? (
+        <p>
+          Até o momento, sem vencedores ou perdedores por aqui. Apenas você e
+          sua extraordinária irrelevância.
+        </p>
+      ) : currentUser.name === leader.name ? (
         <>
           <p>
-            A propósito, sabia que você é o jogador com o "albergue" mais
-            recheado de gente?
+            A propósito, sabia que <span className="magenta"> você </span> é o
+            jogador com o "albergue" mais recheado de gente?
           </p>
           <p>Tá com tempo livre, né?</p>
         </>
@@ -48,12 +53,13 @@ function Greetings() {
         <>
           <p>
             A propósito, sabia que
-            <span className="magenta"> {leader} </span>é o jogador com mais crias
-            capturadas em seu "abrigo"?
+            <span className="magenta"> {leader.name} </span>é o jogador com mais
+            crias capturadas em seu "abrigo"?
           </p>
           <p>É isso mesmo?</p>
           <p>
-            Por que não desiste e volta para as suas discussões estúpidas de Twitter?
+            Por que não desiste e volta para as suas discussões estúpidas de
+            Twitter?
           </p>
           <p>É o que você merece.</p>
         </>
